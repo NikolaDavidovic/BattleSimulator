@@ -66,6 +66,7 @@ class Soldier
     {
         $this->health -= $health;
         if ($this->health <= 0) {
+            $this->health = 0;
             $this->setIsDead(true);
         }
     }

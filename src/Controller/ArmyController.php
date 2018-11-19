@@ -24,7 +24,6 @@ class ArmyController
             $soldier->reduceHealth($health);
             if ($soldier->isDead()) {
                 $army->reduceTotalDamage($soldier->getDamage());
-                $soldier->setIsDead(true);
                 $army->killSoldier($key);
             }
         }
