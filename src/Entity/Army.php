@@ -14,12 +14,7 @@ class Army
      */
     public function __construct($numOfSoldiers)
     {
-        $validator = new ArmyValidator();
-        try {
-            $validator->validate($numOfSoldiers);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
+        $this->validate($numOfSoldiers);
         $this->numOfSoldiers = $numOfSoldiers;
         $this->setSoldiers();
     }
@@ -83,6 +78,19 @@ class Army
             $soldier = new Soldier();
             $this->soldiers[$i] = $soldier;
             $this->totalDamage += $soldier->getDamage();
+        }
+    }
+
+    /**
+     * @param int $numOfSoldiers
+     */
+    private function validate($numOfSoldiers)
+    {
+        $validator = new ArmyValidator();
+        try {
+            $validator->validate($numOfSoldiers);
+        } catch (Exception $e) {
+            die($e->getMessage());
         }
     }
 }
